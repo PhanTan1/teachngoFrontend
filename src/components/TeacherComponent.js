@@ -1,56 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TeacherService from '../services/TeacherService';
 
-class TeacherComponent extends React.Component {
+const TeacherComponent = () => {
+    const [teachers, setTeachers] = useState(null)
 
-    constructor(props){
-        super(props)
-        this.state = {
-            Teachers:[]
-        }
-    }
+    useEffect(() => {
+        setTeachers(
+            TeacherService.getTeachers(setTeachers)
+            )
+    }, [])
 
-    componentDidMount(){
-        TeacherService.getTeachers().then((response) => {
-            this.setState({ Teachers: response.data})
-        });
-    }
-
-    render (){
-        return (
-            <div>
-                <h1 className = "text-center"> Teachers List</h1>
-                <table className = "table table-striped">
-                    <thead>
-                        <tr>
-
-                            <td> Teacher Id</td>
-                            <td> Teacher First Name</td>
-                            <td> Teacher Last Name</td>
-                            <td> Teacher Email Id</td>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.Teachers.map(
-                                teacher => 
-                                <tr key = {teacher.id}>
-                                     <td> {teacher.id}</td>   
-                                     <td> {teacher.firstName}</td>   
-                                     <td> {teacher.lastName}</td>   
-                                     <td> {teacher.email}</td>   
+    return (
+        <div>
+            <h1 className="text-center"> Teachers List</h1>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <td> Teacher Id</td>
+                        <td> Teacher First Name</td>
+                        <td> Teacher Last Name</td>
+                        <td> Teacher Email Id</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        teachers? 
+                        teachers.map(
+                            teacher =>
+                                <tr key={teacher.id}>
+                                    <td> {teacher.id}</td>
+                                    <td> {teacher.firstName}</td>
+                                    <td> {teacher.lastName}</td>
+                                    <td> {teacher.email}</td>
                                 </tr>
-                            )
-                        }
-
-                    </tbody>
-                </table>
-
-            </div>
-
-        )
-    }
+                        ):null
+                    }
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default TeacherComponent

@@ -35,7 +35,7 @@ const Navigation = (props) => {
   return (
     <Nav>
       <List>
-        <StyledLink to="/home"><li>Home</li></StyledLink>
+        <StyledLink to="/"><li>Home</li></StyledLink>
         <StyledLink to="/teachers"><li>Teachers</li></StyledLink>
         <StyledLink to="/login"><li>Login</li></StyledLink>
       </List>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TeacherService from '../services/TeacherService';
+import TeacherService from '../../services/TeacherService';
 
-const TeacherComponent = () => {
+const Teachers = () => {
     const [teachers, setTeachers] = useState(null)
 
     useEffect(() => {
@@ -41,4 +41,4 @@ const TeacherComponent = () => {
     )
 }
 
-export default TeacherComponent
+export default Teachers

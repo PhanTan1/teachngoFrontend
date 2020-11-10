@@ -34,6 +34,10 @@ const Input = styled.div`
   input {
     width: 100%;
   }
+
+  :nth-of-type(2) {
+    margin-top: 20px;
+  }
 `
 
 const Login = (props) => {
@@ -60,7 +64,7 @@ const Login = (props) => {
           </Input>
           <Input>
             <label>Password</label>
-            <input type="paswword" autoComplete="off" value={password} onChange={handlePassword} />
+            <input type="password" autoComplete="off" value={password} onChange={handlePassword} />
           </Input>
         </form>
       </Box>

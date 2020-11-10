@@ -8,7 +8,7 @@ import Footer from './components/Footer'
 
 
 const Wrapper = styled.div`
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 120px);
 `
 
 function App() {

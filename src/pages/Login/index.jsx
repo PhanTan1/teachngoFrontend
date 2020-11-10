@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
+import { Redirect } from "react-router-dom"
+import Button from "../../components/Button"
 
 const Container = styled.div`
   position: relative;
@@ -13,7 +15,7 @@ const Box = styled.div`
   top: 50%;
   left: 50%;
   width: 280px;
-  height: 250px;
+  height: 290px;
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
@@ -40,9 +42,14 @@ const Input = styled.div`
   }
 `
 
+const ButtonWrapper = styled.div`
+  margin-top: 30px;
+`
+
 const Login = (props) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [loggedIn, setLoggedIn] = useState(false)
 
   function handleUsername(e) {
     setUsername(e.target.value)
@@ -52,23 +59,34 @@ const Login = (props) => {
     setPassword(e.target.value)
   }
 
+  function toggleLoggedIn() {
+    //TODO: Fix login logic
+    setLoggedIn(!loggedIn)
+  }
+
 
   return (
-    <Container>
-      <Box>
-        <form>
-          <h3>Login</h3>
-          <Input>
-            <label>Username</label>
-            <input type="text" autoComplete="off" value={username} onChange={handleUsername} />
-          </Input>
-          <Input>
-            <label>Password</label>
-            <input type="password" autoComplete="off" value={password} onChange={handlePassword} />
-          </Input>
-        </form>
-      </Box>
-    </Container>
+    loggedIn ?
+      <Redirect to="/teachers" /> :
+
+      <Container>
+        <Box>
+          <form>
+            <h3>Login</h3>
+            <Input>
+              <label>Username</label>
+              <input type="text" autoComplete="off" value={username} onChange={handleUsername} />
+            </Input>
+            <Input>
+              <label>Password</label>
+              <input type="password" autoComplete="off" value={password} onChange={handlePassword} />
+            </Input>
+            <ButtonWrapper>
+              <Button onClick={toggleLoggedIn}>Log in</Button>
+            </ButtonWrapper>
+          </form>
+        </Box>
+      </Container>
 
   )
 }

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TeacherService from '../../services/TeacherService';
+import { Link } from 'react-router-dom'
 
 const Teachers = () => {
-    const [teachers, setTeachers] = useState(null)
+    const [teachers, setTeachers] = useState([{ id: 1, firstName: 'Jean', lastName: 'Trou', email: 'test@test.com' }])
 
     useEffect(() => {
-        setTeachers(
-            TeacherService.getTeachers(setTeachers)
-            )
+        // setTeachers(
+        //     TeacherService.getTeachers(setTeachers)
+        // )
     }, [])
 
     return (
@@ -24,16 +25,20 @@ const Teachers = () => {
                 </thead>
                 <tbody>
                     {
-                        teachers? 
-                        teachers.map(
-                            teacher =>
-                                <tr key={teacher.id}>
-                                    <td> {teacher.id}</td>
-                                    <td> {teacher.firstName}</td>
-                                    <td> {teacher.lastName}</td>
-                                    <td> {teacher.email}</td>
-                                </tr>
-                        ):null
+                        teachers ?
+                            teachers.map(
+                                teacher =>
+                                    <tr key={teacher.id}>
+                                        <td>
+                                            <Link to={`/teachers/profile/${teacher.id}`}>
+                                                {teacher.id}
+                                            </Link>
+                                        </td>
+                                        <td> {teacher.firstName}</td>
+                                        <td> {teacher.lastName}</td>
+                                        <td> {teacher.email}</td>
+                                    </tr>
+                            ) : null
                     }
                 </tbody>
             </table>

@@ -1,0 +1,90 @@
+import React from 'react'
+import styled from "styled-components"
+import pic from "../../static/images/Tan.png"
+import Button from "../../components/Button"
+
+const Image = styled.img`
+  border-radius: 20px;
+  max-width: 25%;
+`
+
+const Head = styled.div`
+  display: flex;
+  max-width: 1000px;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  padding: 20px;
+`
+
+const Mid = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 50%;
+`
+
+const Comment = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+`
+
+const OrderBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+`
+
+const ButtonWrapper = styled.div`
+  margin-top: 20px;
+`
+
+const Info = styled.p`
+  margin-top: 20px;
+`
+
+const Body = styled.div`
+  background-color: #F4A261;
+`
+
+const ProfileTeacher = (props) => {
+  return (
+    <>
+      <Head>
+        <Image src={pic} alt='Tan' />
+        <Mid>
+          <h1>Tan</h1>
+          <p>Salut je m'appelle Tan. Reservez moi, je coute pas cher</p>
+          <Comment>
+            <div>Rachid</div>
+            <p>Moi j'ai commande Tan, sa mere j'ai reussi mes exams khoya</p>
+          </Comment>
+        </Mid>
+        <OrderBox>
+          <div>10€/h</div>
+          <ButtonWrapper>
+            <Button>Reserver</Button>
+          </ButtonWrapper>
+          <Info>
+            <div>Premier cours payant</div>
+            <p>T'as cru que c'etait l'armee du salut ou quoi?</p>
+          </Info>
+        </OrderBox>
+      </Head>
+      <Body>
+        <div>Truc</div>
+        <div>Truc</div>
+        <div>Truc</div>
+        <div>Truc</div>
+        <div>Truc</div>
+        <div>Truc</div>
+      </Body>
+    </>
+  )
+}
+
+export default ProfileTeacher

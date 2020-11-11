@@ -6,9 +6,9 @@ const Teachers = () => {
     const [teachers, setTeachers] = useState([{ id: 1, firstName: 'Jean', lastName: 'Trou', email: 'test@test.com' }])
 
     useEffect(() => {
-        // setTeachers(
-        //     TeacherService.getTeachers(setTeachers)
-        // )
+         setTeachers(
+             TeacherService.getTeachers(setTeachers)
+         )
     }, [])
 
     return (

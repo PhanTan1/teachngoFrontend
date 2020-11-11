@@ -30,7 +30,7 @@ const Teachers = () => {
                                 teacher =>
                                     <tr key={teacher.id}>
                                         <td>
-                                            <Link to={`/teachers/profile/${teacher.id}`}>
+                                            <Link to={`/teachers/${teacher.id}`}>
                                                 {teacher.id}
                                             </Link>
                                         </td>

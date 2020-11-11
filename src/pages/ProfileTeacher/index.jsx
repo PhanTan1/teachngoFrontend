@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 import pic from "../../static/images/Tan.png"
 import Button from "../../components/Button"
+import { Link } from "react-router-dom"
 
 const Image = styled.img`
   border-radius: 20px;
@@ -52,6 +53,7 @@ const Body = styled.div`
 `
 
 const ProfileTeacher = (props) => {
+  const { id } = props.match.params
   return (
     <>
       <Head>
@@ -67,7 +69,9 @@ const ProfileTeacher = (props) => {
         <OrderBox>
           <div>10€/h</div>
           <ButtonWrapper>
-            <Button>Reserver</Button>
+            <Link to={`/teachers/${id}/reservation`}>
+              <Button>Reserver</Button>
+            </Link>
           </ButtonWrapper>
           <Info>
             <div>Premier cours payant</div>

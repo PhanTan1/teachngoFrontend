@@ -6,7 +6,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Navigation from "./components/Navigation"
 import Footer from './components/Footer'
-
+import ProfilTeacher from './pages/ProfileTeacher'
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 120px);
@@ -21,8 +21,9 @@ function App() {
           <>
             <Navigation />
             <Wrapper>
+              <Route path="/teachers/:id"  render={props => <ProfilTeacher {...props} />} />
+              <Route path="/teachers" exact render={props => <Teachers {...props} />} />
               <Route path="/" exact render={props => <Home {...props} />} />
-              <Route path="/teachers" render={props => <Teachers {...props} />} />
             </Wrapper>
             <Footer />
           </>

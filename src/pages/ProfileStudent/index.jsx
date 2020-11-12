@@ -52,7 +52,7 @@ const Body = styled.div`
   background-color: #F4A261;
 `
 
-const ProfileTeacher = (props) => {
+const ProfileStudent = (props) => {
   const { id } = props.match.params
   return (
     <>
@@ -61,23 +61,7 @@ const ProfileTeacher = (props) => {
         <Mid>
           <h1>Marc</h1>
           <p>Salut je m'appelle Marc. Reservez moi, je coute pas cher</p>
-          <Comment>
-            <div>Jacques</div>
-            <p>Moi j'ai commande Marc exellent prof</p>
-          </Comment>
         </Mid>
-        <OrderBox>
-          <div>10€/h</div>
-          <ButtonWrapper>
-            <Link to={`/teachers/${id}/reservation`}>
-              <Button>Reserver</Button>
-            </Link>
-          </ButtonWrapper>
-          <Info>
-            <div>Premier cours payant</div>
-            <p>dskjfnsdkngdjsknjdsnvndskjvnksjdv</p>
-          </Info>
-        </OrderBox>
       </Head>
       <Body>
         <div>Truc</div>
@@ -91,4 +75,4 @@ const ProfileTeacher = (props) => {
   )
 }
 
-export default ProfileTeacher
+export default ProfileStudent

@@ -3,7 +3,7 @@ import TeacherService from '../../services/TeacherService';
 import { Link } from 'react-router-dom'
 
 const Teachers = () => {
-    const [teachers, setTeachers] = useState([{ id: 1, firstName: 'Jean', lastName: 'Trou', email: 'test@test.com' }])
+    const [teachers, setTeachers] = useState([{ id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com' }])
 
     useEffect(() => {
          setTeachers(

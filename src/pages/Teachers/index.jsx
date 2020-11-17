@@ -1,20 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import styled from "styled-components"
 import TeacherService from '../../services/TeacherService';
 import { Link } from 'react-router-dom'
+import Bubble from "../../components/Bubble"
+
+import pic from "../../static/images/Marc.jpg"
+import pic2 from "../../static/images/tan.png"
+
+const TeachersWrapper = styled.div`
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 50px auto 0;
+`
 
 const Teachers = () => {
-    const [teachers, setTeachers] = useState([{ id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com' }])
+    const [teachers, setTeachers] = useState([
+        { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic },
+        { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2 },
+    ])
 
     useEffect(() => {
-         setTeachers(
-             TeacherService.getTeachers(setTeachers)
-         )
+        //  setTeachers(
+        //      TeacherService.getTeachers(setTeachers)
+        //  )
     }, [])
 
     return (
         <div>
             <h1 className="text-center"> Teachers List</h1>
-            <table className="table table-striped">
+
+            <TeachersWrapper>
+                {teachers.map(teacher => (
+                    <Link to={`/teachers/${teacher.id}`}>
+                        <Bubble bg={teacher.profilPic} />
+                    </Link>
+                ))}
+            </TeachersWrapper>
+            {/* <table className="table table-striped">
                 <thead>
                     <tr>
                         <td> Teacher Id</td>
@@ -41,7 +65,7 @@ const Teachers = () => {
                             ) : null
                     }
                 </tbody>
-            </table>
+            </table> */}
         </div>
     )
 }

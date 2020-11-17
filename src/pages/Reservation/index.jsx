@@ -6,6 +6,8 @@ import {
   Scheduler,
   WeekView,
   Appointments,
+  EditRecurrenceMenu,
+  DragDropProvider,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Calendar from "../../components/Calendar"
 import { appointments } from "../../static/data/appoitments"
@@ -22,6 +24,10 @@ const Reservation = (props) => {
   })
 
   const { data, currentDate } = rdv;
+
+  function test() {
+    alert("ca marche")
+  }
 
   return (
     <Wrapper>
@@ -42,7 +48,10 @@ const Reservation = (props) => {
           />
           <Appointments
             appointmentComponent={Calendar}
+            onClick={test}
           />
+          {/* <EditRecurrenceMenu />
+          <DragDropProvider /> */}
         </Scheduler>
       </Paper>
     </Wrapper>

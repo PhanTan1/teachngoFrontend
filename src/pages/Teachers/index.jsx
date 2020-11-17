@@ -28,7 +28,7 @@ const StyledLink = styled(Link)`
 const Teachers = () => {
     const [teachers, setTeachers] = useState([
         { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic, location: 'Chnok City' },
-        { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Kabul' },
+        { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Brazzaville' },
     ])
 
     useEffect(() => {

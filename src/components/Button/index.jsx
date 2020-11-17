@@ -20,6 +20,9 @@ const test = createMuiTheme({
   palette: {
     primary: {
       main: '#2A9D8F'
+    },
+    secondary: {
+      main: "#E76F51"
     }
   }
 });

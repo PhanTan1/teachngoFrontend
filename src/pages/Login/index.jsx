@@ -6,7 +6,7 @@ import Button from "../../components/Button"
 const Container = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 142px);
   background-color: #264653;
 `
 

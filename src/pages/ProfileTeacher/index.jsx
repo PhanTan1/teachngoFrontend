@@ -14,9 +14,13 @@ const Image = styled.div`
   background-position: center;
 `
 
+const Intro = styled.p`
+  text-align: left;
+`
+
 const Head = styled.div`
   display: flex;
-  max-width: 1000px;
+  max-width: 1100px;
   justify-content: space-between;
   margin: 0 auto;
   align-items: center;
@@ -28,13 +32,16 @@ const Mid = styled.div`
   flex-direction: column;
   align-items: flex-start;
   max-width: 50%;
+  width; 100%;
+  margin-left: 20px;
 `
 
 const Comment = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  border: 1px solid grey;
+  border: 2px solid #2A9D8F;
   border-radius: 5px;
   padding: 10px;
 `
@@ -42,14 +49,16 @@ const Comment = styled.div`
 const OrderBox = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 20%;
+  margin-left: 20px;
 `
 
 const ButtonWrapper = styled.div`
   margin-top: 20px;
 `
 
-const Info = styled.p`
+const Info = styled.div`
   margin-top: 20px;
 `
 
@@ -69,15 +78,30 @@ const InfoBox = styled.div`
 `
 
 const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: inherit;
-    
-    :hover {
-        color: inherit;
-        text-decoration: none;
-    }
+  text-decoration: none;
+  color: inherit;
+  
+  :hover {
+      color: inherit;
+      text-decoration: none;
+  }
 `
 
+const Prix = styled.span`
+  font-size: 32px;
+  font-weight: bold;
+  color: #E76F51;
+`
+
+const SectionTitle = styled.h3`
+  padding-bottom: 10px;
+  border-bottom: solid 1px  rgb(42, 157, 143);
+`
+
+const InfoContent = styled.p`
+  padding: 10px;
+  text-align: left;
+`
 
 const ProfileTeacher = (props) => {
   const { id } = props.match.params
@@ -87,14 +111,14 @@ const ProfileTeacher = (props) => {
         <Image bg={pic} alt='Marc' />
         <Mid>
           <h1>Marc</h1>
-          <p>Salut je m'appelle Marc. Reservez moi, je coute pas cher</p>
+          <Intro>Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher </Intro>
           <Comment>
             <div>Jacques</div>
             <p>Moi j'ai commande Marc exellent prof</p>
           </Comment>
         </Mid>
         <OrderBox>
-          <div>10€/h</div>
+          <Prix>10€/h</Prix>
           <ButtonWrapper>
             <StyledLink to={`/teachers/${id}/reservation`}>
               <Button color="secondary" >Reserver</Button>
@@ -102,14 +126,14 @@ const ProfileTeacher = (props) => {
           </ButtonWrapper>
           <Info>
             <div>Premier cours payant</div>
-            <p>dskjfnsdkngdjsknjdsnvndskjvnksjdv</p>
+            <p>dskjfnsdkn gdjsknjdsnvnd skjvnksjdv</p>
           </Info>
         </OrderBox>
       </Head>
       <Body>
         <InfoBox>
-          <h3>Informations</h3>
-          <p>
+          <SectionTitle>Informations</SectionTitle>
+          <InfoContent>
             Maecenas vel enim id orci lacinia pharetra.
             Suspendisse quis tincidunt augue.
             Ut laoreet risus sit amet mauris euismod, vel vestibulum ex consequat.
@@ -118,31 +142,31 @@ const ProfileTeacher = (props) => {
             Vivamus sagittis ex vitae cursus ultrices.
             Phasellus et felis et turpis laoreet egestas.
             Donec accumsan suscipit ante, ut aliquet ex.
-          </p>
+          </InfoContent>
         </InfoBox>
         <InfoBox>
-          <h3>Consignes</h3>
-          <p>Morbi aliquet imperdiet sem nec volutpat.
-          Fusce non imperdiet arcu. Integer egestas orci nec ipsum tempor faucibus.
-          Praesent turpis dui, mattis id lacus et, finibus ornare eros. Vivamus vitae magna sapien.
-          Cras euismod nisl sit amet eros gravida, vitae porta urna sodales. Proin eget rhoncus est.
-          Nullam enim massa, faucibus sit amet egestas non, fringilla auctor felis.
-          Mauris porttitor rhoncus ipsum at feugiat. Nunc lacinia tincidunt lectus, eget accumsan massa gravida id.
-          Morbi vitae leo urna. Nunc in efficitur sem. Maecenas id velit semper, ullamcorper dui eu, fermentum dui.
-          Proin eu iaculis metus, et ullamcorper sem.
-          Mauris nunc nisl, dictum sit amet erat sit amet, porta pretium tellus. Sed eu ex nisl.
-            </p>
-          <p>
+          <SectionTitle>Consignes</SectionTitle>
+          <InfoContent>Morbi aliquet imperdiet sem nec volutpat.
+            Fusce non imperdiet arcu. Integer egestas orci nec ipsum tempor faucibus.
+            Praesent turpis dui, mattis id lacus et, finibus ornare eros. Vivamus vitae magna sapien.
+            Cras euismod nisl sit amet eros gravida, vitae porta urna sodales. Proin eget rhoncus est.
+            Nullam enim massa, faucibus sit amet egestas non, fringilla auctor felis.
+            Mauris porttitor rhoncus ipsum at feugiat. Nunc lacinia tincidunt lectus, eget accumsan massa gravida id.
+            Morbi vitae leo urna. Nunc in efficitur sem. Maecenas id velit semper, ullamcorper dui eu, fermentum dui.
+            Proin eu iaculis metus, et ullamcorper sem.
+            Mauris nunc nisl, dictum sit amet erat sit amet, porta pretium tellus. Sed eu ex nisl.
+          </InfoContent>
+          <InfoContent>
             Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Mauris imperdiet tellus egestas dignissim auctor. Sed vel maximus nisi.
             Nullam sed mi vitae dolor placerat hendrerit sed hendrerit dui.
             Vivamus eget risus ac tortor maximus lobortis at ac eros. Nulla volutpat in nibh sit amet tincidunt.
             Nunc ultricies erat dui, vitae volutpat ex tristique eu. Maecenas felis elit, tincidunt sit amet laoreet quis, fermentum vitae ligula.
             In hac habitasse platea dictumst. Vestibulum in libero id sem tincidunt hendrerit. Phasellus eget lorem nisi.
-            </p>
+          </InfoContent>
         </InfoBox>
         <InfoBox >
-          <h3>Something</h3>
+          <SectionTitle>Something</SectionTitle>
         </InfoBox>
       </Body>
     </>

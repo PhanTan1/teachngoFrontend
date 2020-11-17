@@ -19,22 +19,20 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navigation />
         <Switch>
-          <Route path="/login" render={props => <Login {...props} />} />
-          <>
-            <Navigation />
-            <Wrapper>
-              <Route path="/teachers/:id/reservation" exact render={props => <Reservation {...props} />} />
-              <Route path="/students/:id/reservation" exact render={props => <Reservation {...props} />} />
-              <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
-              <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />
-              <Route path="/teachers" exact render={props => <Teachers {...props} />} />
-              <Route path="/students" exact render={props => <Students {...props} />} />
-              <Route path="/" exact render={props => <Home {...props} />} />
-            </Wrapper>
-            <Footer />
-          </>
+          <Wrapper>
+            <Route path="/teachers/:id/reservation" exact render={props => <Reservation {...props} />} />
+            <Route path="/students/:id/reservation" exact render={props => <Reservation {...props} />} />
+            <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
+            <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />
+            <Route path="/login" exact render={props => <Login {...props} />} />
+            <Route path="/teachers" exact render={props => <Teachers {...props} />} />
+            <Route path="/students" exact render={props => <Students {...props} />} />
+            <Route path="/" exact render={props => <Home {...props} />} />
+          </Wrapper>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

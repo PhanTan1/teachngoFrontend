@@ -7,6 +7,7 @@ const Container = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+  background-color: #264653;
 `
 
 const Box = styled.div`
@@ -14,27 +15,33 @@ const Box = styled.div`
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: 290px;
-  border: 1px solid black;
-  border-radius: 20px;
+  width: 350px;
+  height: 320px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.3);
+  justify-content: center;
+  background-color: white;
 `
 
 const Input = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
+  font-size: 16px;
+  
   label{
     width: 100%;
     text-align: left;
   }
-
+  
   input {
+    font-size: 18px;
     width: 100%;
+    min-height: 40px;
   }
 
   :nth-of-type(2) {
@@ -72,13 +79,12 @@ const Login = (props) => {
       <Container>
         <Box>
           <form>
-            <h3>Login</h3>
             <Input>
-              <label>Username</label>
+              <label>Identifiant ou adresse e-mail</label>
               <input type="text" autoComplete="off" value={username} onChange={handleUsername} />
             </Input>
             <Input>
-              <label>Password</label>
+              <label>Mot de passe</label>
               <input type="password" autoComplete="off" value={password} onChange={handlePassword} />
             </Input>
             <ButtonWrapper>

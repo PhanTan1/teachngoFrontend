@@ -12,7 +12,7 @@ import ProfilStudent from './pages/ProfileStudent'
 import Reservation from './pages/Reservation'
 
 const Wrapper = styled.div`
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 142px);
 `
 
 function App() {

@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Wrapper = styled.div`
   min-height: 70px;
-  border-top: 1px solid black;
+  background-color: #2A9D8F;
 `
 
 const Footer = (props) => {

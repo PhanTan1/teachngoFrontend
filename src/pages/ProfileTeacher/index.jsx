@@ -20,7 +20,7 @@ const Intro = styled.p`
 
 const Head = styled.div`
   display: flex;
-  max-width: 1100px;
+  max-width: 1200px;
   justify-content: space-between;
   margin: 0 auto;
   align-items: center;
@@ -28,6 +28,7 @@ const Head = styled.div`
 `
 
 const Mid = styled.div`
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import ProfilTeacher from './pages/ProfileTeacher'
 import ProfilStudent from './pages/ProfileStudent'
 import Reservation from './pages/Reservation'
+import Signup from './pages/Signup'
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 142px);
@@ -27,6 +28,7 @@ function App() {
             <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
             <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />
             <Route path="/login" exact render={props => <Login {...props} />} />
+            <Route path="/signup" exact render={props => <Signup {...props} />} />
             <Route path="/teachers" exact render={props => <Teachers {...props} />} />
             <Route path="/students" exact render={props => <Students {...props} />} />
             <Route path="/" exact render={props => <Home {...props} />} />

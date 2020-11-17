@@ -41,9 +41,11 @@ const Navigation = (props) => {
         <StyledLink to="/"><li>Home</li></StyledLink>
         <StyledLink to="/teachers"><li>Teachers</li></StyledLink>
         <StyledLink to="/students"><li>Students</li></StyledLink>
-        <StyledLink to="/login"><li>Login</li></StyledLink>
+        <StyledLink to="/login"><li>Connexion</li></StyledLink>
       </List>
-      <Button color="primary">Appelez nous</Button>
+      <StyledLink to="/signup">
+        <Button color="primary">Inscription</Button>
+      </StyledLink>
     </Nav>
   )
 }

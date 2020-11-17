@@ -15,10 +15,20 @@ const TeachersWrapper = styled.div`
     margin: 50px auto 0;
 `
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+    
+    :hover {
+        color: inherit;
+        text-decoration: none;
+    }
+`
+
 const Teachers = () => {
     const [teachers, setTeachers] = useState([
-        { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic },
-        { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2 },
+        { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic, location: 'Chnok City' },
+        { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Kabul' },
     ])
 
     useEffect(() => {
@@ -33,9 +43,9 @@ const Teachers = () => {
 
             <TeachersWrapper>
                 {teachers.map(teacher => (
-                    <Link to={`/teachers/${teacher.id}`}>
-                        <Bubble bg={teacher.profilPic} />
-                    </Link>
+                    <StyledLink to={`/teachers/${teacher.id}`}>
+                        <Bubble name={teacher.firstName} bg={teacher.profilPic} location={teacher.location} />
+                    </StyledLink>
                 ))}
             </TeachersWrapper>
             {/* <table className="table table-striped">

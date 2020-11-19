@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
@@ -11,6 +11,8 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Calendar from "../../components/Calendar"
 import { appointments } from "../../static/data/appoitments"
+import AvailabilityService from "../../services/AvailabilityService"
+ 
 
 const Wrapper = styled.div`
   max-width: 1000px;
@@ -19,7 +21,7 @@ const Wrapper = styled.div`
 
 const Reservation = (props) => {
   const [rdv, setRdv] = useState({
-    data: appointments,
+    data: [{}],
     currentDate: '2018-06-27',
   })
 
@@ -29,6 +31,10 @@ const Reservation = (props) => {
     alert("ca marche")
   }
 
+  useEffect(()=>{
+    AvailabilityService.getAvailabilities(props.match.params.id, setRdv)
+
+  },[])
   return (
     <Wrapper>
       <div>Reserver</div>
@@ -43,8 +49,8 @@ const Reservation = (props) => {
             currentDate={currentDate}
           />
           <WeekView
-            startDayHour={9}
-            endDayHour={19}
+            startDayHour={0}
+            endDayHour={24}
           />
           <Appointments
             appointmentComponent={Calendar}

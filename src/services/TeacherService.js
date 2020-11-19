@@ -1,10 +1,9 @@
-import axios from 'axios'
+import {client} from './Client'
 
-const TEACHERS_REST_API_URL = 'http://localhost:8080/api/teachers';
 
 class TeacherService {
     getTeachers(callback) {
-        axios.get(TEACHERS_REST_API_URL).then(result => {
+        client.get('teachers').then(result => {
             console.log(result)
 
 

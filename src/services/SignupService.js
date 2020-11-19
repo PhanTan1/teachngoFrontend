@@ -3,7 +3,8 @@ import { client } from './Client'
 
 class SignupService {
   async registerNewUser(values) {
-    const response = await client.post(``, values).then(result => {
+    console.log (values)
+    const response = await client.post(`students`, values).then(result => {
 
       return result
     })

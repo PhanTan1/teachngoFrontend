@@ -62,14 +62,14 @@ const ButtonWrapper = styled.div`
 `
 
 const initialValues = {
-  firstname: '',
+  firstName: '',
   gender: "",
-  lastname: '',
+  lastName: '',
   email: '',
   login: '',
   password: '',
   phone: '',
-  address: {
+  adress: {
     street: 'rue',
     streetNumber: '3',
     postalCode: '1808',
@@ -97,13 +97,13 @@ export default function Signup(props) {
                 <SmallInput
                   id="standard-basic"
                   label="Nom"
-                  name="lastname"
+                  name="lastName"
                   onChange={props.handleChange}
                 />
                 <SmallInput
                   id="standard-basic"
                   label="Prenom"
-                  name="firstname"
+                  name="firstName"
                   onChange={props.handleChange}
                 />
               </FieldWrapper>

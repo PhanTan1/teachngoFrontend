@@ -70,13 +70,13 @@ const initialValues = {
   password: '',
   phone: '',
   address: {
-    street: '',
-    streetNumber: '',
-    postalCode: '',
-    country: '',
-    boxNumber: ''
+    street: 'rue',
+    streetNumber: '3',
+    postalCode: '1808',
+    country: 'BELGIUM',
+    boxNumber: '1'
   },
-  account: '',
+  accounts: [],
 }
 
 export default function Signup(props) {

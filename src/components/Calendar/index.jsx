@@ -6,7 +6,7 @@ import {
 const Calendar = ({ children, style, ...rest }) => {
 
   function test() {
-    alert('ca marche pas')
+    alert(`start date: ${rest.data.startDate} //// end date ${rest.data.endDate}`)
   }
   return (
 
@@ -17,7 +17,7 @@ const Calendar = ({ children, style, ...rest }) => {
         backgroundColor: '#FFC107',
         borderRadius: '8px',
       }}
-      // onClick={test}
+      onClick={test}
       draggable={true}
     >
       {children}

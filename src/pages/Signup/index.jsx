@@ -111,7 +111,7 @@ export default function Signup(props) {
                 <SmallInput
                   id="standard-basic"
                   label="Nom d'utilisateur"
-                  name="username"
+                  name="login"
                   onChange={props.handleChange}
                 />
                 <DropDown>
@@ -121,7 +121,7 @@ export default function Signup(props) {
                     value={props.values.gender}
                     onChange={props.handleChange}
                     inputProps={{
-                      name: 'Genre',
+                      name: 'gender',
                       id: 'gender-drop',
                     }}
                   >

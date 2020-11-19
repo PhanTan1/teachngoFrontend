@@ -30,6 +30,10 @@ const SmallInput = styled(TextField)`
   width: 45%
 `
 
+const MiniInput = styled(TextField)`
+  width: 25%;
+`
+
 const DropDown = styled(FormControl)`
   width: 45%
 `
@@ -59,6 +63,11 @@ const ButtonWrapper = styled.div`
   display: flex;
   margin: 30px auto;
   justify-content: space-between;
+`
+
+const SubTitle = styled.span`
+  font-size: 30px;
+  margin-top: 30px;
 `
 
 const initialValues = {
@@ -93,6 +102,7 @@ export default function Signup(props) {
           }}>
           {props =>
             <Form>
+              <SubTitle>Information personnelles</SubTitle>
               <FieldWrapper>
                 <SmallInput
                   id="standard-basic"
@@ -170,6 +180,41 @@ export default function Signup(props) {
                   onChange={props.handleChange}
                 />
               </SingleFieldWrapper>
+              <SubTitle>Adresse</SubTitle>
+              <FieldWrapper>
+                <SmallInput
+                  id="standard-basic"
+                  label="Rue"
+                  name="adress.street"
+                  onChange={props.handleChange}
+                />
+                <MiniInput
+                  id="standard-basic"
+                  label="Numero"
+                  name="adress.streetNumber"
+                  onChange={props.handleChange}
+                />
+                <MiniInput
+                  id="standard-basic"
+                  label="Numero de boite"
+                  name="adress.boxNumber"
+                  onChange={props.handleChange}
+                />
+              </FieldWrapper>
+              <FieldWrapper>
+                <SmallInput
+                  id="standard-basic"
+                  label="Code postal"
+                  name="adress.postalCode"
+                  onChange={props.handleChange}
+                />
+                <SmallInput
+                  id="standard-basic"
+                  label="Pays"
+                  name="adress.country"
+                  onChange={props.handleChange}
+                />
+              </FieldWrapper>
               <ButtonWrapper>
                 <Button color="secondary">Effacer</Button>
                 <Button color="primary" onClick={props.handleSubmit}>Enregistrer</Button>

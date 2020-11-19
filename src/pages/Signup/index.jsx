@@ -10,7 +10,7 @@ import SignupService from "../../services/SignupService"
 
 const Container = styled.div`
   width: 100vw;
-  height: calc(100vh - 142px);
+  min-height: calc(100vh - 142px);
   background-color: #264653;
   padding: 50px 20px;
 `

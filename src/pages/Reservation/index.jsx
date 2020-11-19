@@ -6,17 +6,18 @@ import {
   Scheduler,
   WeekView,
   Appointments,
-  EditRecurrenceMenu,
-  DragDropProvider,
+  DateNavigator,
+  TodayButton,
+  Toolbar,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Calendar from "../../components/Calendar"
-import { appointments } from "../../static/data/appoitments"
 import AvailabilityService from "../../services/AvailabilityService"
- 
+
 
 const Wrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  padding: 30px;
 `
 
 const Reservation = (props) => {
@@ -31,15 +32,11 @@ const Reservation = (props) => {
     alert("ca marche")
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     AvailabilityService.getAvailabilities(props.match.params.id, setRdv)
-
-  },[])
+  }, [])
   return (
     <Wrapper>
-      <div>Reserver</div>
-
-
       <Paper>
         <Scheduler
           data={data}
@@ -52,6 +49,9 @@ const Reservation = (props) => {
             startDayHour={0}
             endDayHour={24}
           />
+          <Toolbar />
+          <DateNavigator />
+          <TodayButton />
           <Appointments
             appointmentComponent={Calendar}
             onClick={test}

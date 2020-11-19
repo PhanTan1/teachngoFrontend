@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { Formik } from "formik"
 import Button from "../../components/Button"
+import SignupService from "../../services/SignupService"
 
 const Container = styled.div`
   width: 100vw;
@@ -62,13 +63,20 @@ const ButtonWrapper = styled.div`
 
 const initialValues = {
   firstname: '',
+  gender: "",
   lastname: '',
   email: '',
-  confirmEmail: '',
-  username: '',
+  login: '',
   password: '',
-  confirmPassword: '',
-  phone: ''
+  phone: '',
+  address: {
+    street: '',
+    streetNumber: '',
+    postalCode: '',
+    country: '',
+    boxNumber: ''
+  },
+  account: '',
 }
 
 export default function Signup(props) {
@@ -80,6 +88,8 @@ export default function Signup(props) {
           initialValues={initialValues}
           onSubmit={(values, actions) => {
             console.log(values)
+
+            SignupService.registerNewUser(values)
           }}>
           {props =>
             <Form>
@@ -129,12 +139,12 @@ export default function Signup(props) {
                   name="email"
                   onChange={props.handleChange}
                 />
-                <SmallInput
+                {/* <SmallInput
                   id="standard-basic"
                   label="Confirmer l'email"
                   name="confirmEmail"
                   onChange={props.handleChange}
-                />
+                /> */}
               </FieldWrapper>
               <FieldWrapper>
                 <SmallInput
@@ -144,13 +154,13 @@ export default function Signup(props) {
                   onChange={props.handleChange}
                   type="password"
                 />
-                <SmallInput
+                {/* <SmallInput
                   id="standard-basic"
                   label="Confirmer le mot de passe"
                   name="confirmPassword"
                   onChange={props.handleChange}
                   type="password"
-                />
+                /> */}
               </FieldWrapper>
               <SingleFieldWrapper>
                 <SmallInput

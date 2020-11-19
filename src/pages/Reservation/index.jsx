@@ -11,8 +11,8 @@ import {
   Toolbar,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Calendar from "../../components/Calendar"
+import { appointments } from "../../static/data/appoitments"
 import AvailabilityService from "../../services/AvailabilityService"
-
 
 const Wrapper = styled.div`
   max-width: 1000px;
@@ -21,20 +21,18 @@ const Wrapper = styled.div`
 `
 
 const Reservation = (props) => {
-  const [rdv, setRdv] = useState({
-    data: [{}],
-    currentDate: '2018-06-27',
-  })
+  const [data, setRdv] = useState([])
 
-  const { data, currentDate } = rdv;
+  const [currentDate, setCurrecntDate] = useState(new Date())
 
-  function test() {
-    alert("ca marche")
-  }
+  function currentDateChange(currentDate) {
+    setCurrecntDate(currentDate)
+  };
 
   useEffect(() => {
     AvailabilityService.getAvailabilities(props.match.params.id, setRdv)
   }, [])
+
   return (
     <Wrapper>
       <Paper>
@@ -44,20 +42,18 @@ const Reservation = (props) => {
         >
           <ViewState
             currentDate={currentDate}
+            onCurrentDateChange={currentDateChange}
           />
           <WeekView
-            startDayHour={0}
-            endDayHour={24}
+            startDayHour={9}
+            endDayHour={19}
           />
           <Toolbar />
           <DateNavigator />
           <TodayButton />
           <Appointments
             appointmentComponent={Calendar}
-            onClick={test}
           />
-          {/* <EditRecurrenceMenu />
-          <DragDropProvider /> */}
         </Scheduler>
       </Paper>
     </Wrapper>

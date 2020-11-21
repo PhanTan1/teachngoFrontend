@@ -17,23 +17,32 @@ const Category = styled.div`
   max-width: 20%;
   height: 130px;
   width: 100%;
-  background-color: black
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const InnerText = styled.span`
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
 `
 
 const Home = (props) => {
   return (
     <Wrapper>
       <h1>Welcome to teach and go</h1>
-      {/* <p>
-        This page is under construction.
-        Please visit us again soo and find the teacher thats suits your requirements the best
-    </p> */}
-      <CategoriesWrapper>
-        <Category />
-        <Category />
-        <Category />
-        <Category />
-      </CategoriesWrapper>
+
+      <div>
+        <div>Recherches rapides</div>
+        <CategoriesWrapper>
+          <Category><InnerText>Primaire</InnerText></Category>
+          <Category><InnerText>Secondaire</InnerText></Category>
+          <Category><InnerText>Universitaire</InnerText></Category>
+          <Category><InnerText>Langues</InnerText></Category>
+        </CategoriesWrapper>
+      </div>
     </Wrapper>
   )
 }

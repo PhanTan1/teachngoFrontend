@@ -11,6 +11,7 @@ import ProfilTeacher from './pages/ProfileTeacher'
 import ProfilStudent from './pages/ProfileStudent'
 import Reservation from './pages/Reservation'
 import Signup from './pages/Signup'
+import PersonaProfile from "./pages/ProfilePersonnel"
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 142px);
@@ -24,6 +25,7 @@ function App() {
         <Switch>
           <Wrapper>
             <Route path="/teachers/:id/reservation" exact render={props => <Reservation {...props} />} />
+            <Route path="/teachers/:id/profile" exact render={props => <PersonaProfile {...props} />} />
             <Route path="/students/:id/reservation" exact render={props => <Reservation {...props} />} />
             <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
             <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />

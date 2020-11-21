@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -89,6 +89,7 @@ const initialValues = {
 }
 
 export default function Signup(props) {
+  const [type, setType] = useState(false)
   return (
     <Container>
       <Box>
@@ -98,10 +99,21 @@ export default function Signup(props) {
           onSubmit={(values, actions) => {
             console.log(values)
 
-            SignupService.registerNewUser(values)
+            if (type) {
+              SignupService.registerNewTeacher(values)
+
+            } else {
+              SignupService.registerNewStudent(values)
+            }
           }}>
           {props =>
             <Form>
+
+              <SubTitle>S'enregistrer en tant que: </SubTitle>
+              <div>
+                <Button color="primary" onClick={() => setType(true)}>Professeur</Button>
+                <Button color="primary" onClick={() => setType(false)}>Etudiant</Button>
+              </div>
               <SubTitle>Information personnelles</SubTitle>
               <FieldWrapper>
                 <SmallInput

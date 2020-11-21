@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import pic from "../../static/images/Marc.jpg"
 import Button from "../../components/Button"
@@ -32,9 +32,11 @@ const Mid = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-around;
   max-width: 50%;
-  width; 100%;
+  width: 100%;
   margin-left: 20px;
+  min-height: 250px;
 `
 
 const Comment = styled.div`
@@ -72,9 +74,16 @@ const Body = styled.div`
   padding: 20px;
 `
 
-const InfoBox = styled.div`
+const LeftColumn = styled.div`
   width: 30%;
   background-color: white;
+  padding: 10px;
+  `
+
+const RightColumn = styled.div`
+  width: 60%;
+  background-color: white;
+  
   padding: 10px;
 `
 
@@ -104,15 +113,25 @@ const InfoContent = styled.p`
   text-align: left;
 `
 
+const Comments = styled.div`
+  width: 100%;
+`
+
+const CommentWrapper = styled.div`
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1000px;
+`
+
 const ProfileTeacher = (props) => {
   const { id } = props.match.params
+  const [user, setUser] = useState({ firstname: '', lastname: '', role: "teacher" })
   return (
     <>
       <Head>
         <Image bg={pic} alt='Marc' />
         <Mid>
           <h1>Marc</h1>
-          <Intro>Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher </Intro>
           <Comment>
             <div>Jacques</div>
             <p>Moi j'ai commande Marc exellent prof</p>
@@ -125,14 +144,10 @@ const ProfileTeacher = (props) => {
               <Button color="secondary" >Reserver</Button>
             </StyledLink>
           </ButtonWrapper>
-          <Info>
-            <div>Premier cours payant</div>
-            <p>dskjfnsdkn gdjsknjdsnvnd skjvnksjdv</p>
-          </Info>
         </OrderBox>
       </Head>
       <Body>
-        <InfoBox>
+        <LeftColumn>
           <SectionTitle>Informations</SectionTitle>
           <InfoContent>
             Maecenas vel enim id orci lacinia pharetra.
@@ -144,10 +159,17 @@ const ProfileTeacher = (props) => {
             Phasellus et felis et turpis laoreet egestas.
             Donec accumsan suscipit ante, ut aliquet ex.
           </InfoContent>
-        </InfoBox>
-        <InfoBox>
-          <SectionTitle>Consignes</SectionTitle>
-          <InfoContent>Morbi aliquet imperdiet sem nec volutpat.
+        </LeftColumn>
+        <RightColumn>
+          <div>
+            <SectionTitle>Bio</SectionTitle>
+            <InfoContent>
+              Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher
+          </InfoContent>
+          </div>
+          <div>
+            <SectionTitle>Consignes</SectionTitle>
+            <InfoContent>Morbi aliquet imperdiet sem nec volutpat.
             Fusce non imperdiet arcu. Integer egestas orci nec ipsum tempor faucibus.
             Praesent turpis dui, mattis id lacus et, finibus ornare eros. Vivamus vitae magna sapien.
             Cras euismod nisl sit amet eros gravida, vitae porta urna sodales. Proin eget rhoncus est.
@@ -157,19 +179,24 @@ const ProfileTeacher = (props) => {
             Proin eu iaculis metus, et ullamcorper sem.
             Mauris nunc nisl, dictum sit amet erat sit amet, porta pretium tellus. Sed eu ex nisl.
           </InfoContent>
-          <InfoContent>
-            Interdum et malesuada fames ac ante ipsum primis in faucibus.
-            Mauris imperdiet tellus egestas dignissim auctor. Sed vel maximus nisi.
-            Nullam sed mi vitae dolor placerat hendrerit sed hendrerit dui.
-            Vivamus eget risus ac tortor maximus lobortis at ac eros. Nulla volutpat in nibh sit amet tincidunt.
-            Nunc ultricies erat dui, vitae volutpat ex tristique eu. Maecenas felis elit, tincidunt sit amet laoreet quis, fermentum vitae ligula.
-            In hac habitasse platea dictumst. Vestibulum in libero id sem tincidunt hendrerit. Phasellus eget lorem nisi.
+            <InfoContent>
+              Interdum et malesuada fames ac ante ipsum primis in faucibus.
+              Mauris imperdiet tellus egestas dignissim auctor. Sed vel maximus nisi.
+              Nullam sed mi vitae dolor placerat hendrerit sed hendrerit dui.
+              Vivamus eget risus ac tortor maximus lobortis at ac eros. Nulla volutpat in nibh sit amet tincidunt.
+              Nunc ultricies erat dui, vitae volutpat ex tristique eu. Maecenas felis elit, tincidunt sit amet laoreet quis, fermentum vitae ligula.
+              In hac habitasse platea dictumst. Vestibulum in libero id sem tincidunt hendrerit. Phasellus eget lorem nisi.
           </InfoContent>
-        </InfoBox>
-        <InfoBox >
-          <SectionTitle>Something</SectionTitle>
-        </InfoBox>
+          </div>
+        </RightColumn>
+
+
       </Body>
+      <Comments>
+        <CommentWrapper>
+          <SectionTitle>Commentaires</SectionTitle>
+        </CommentWrapper>
+      </Comments>
     </>
   )
 }

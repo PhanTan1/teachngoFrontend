@@ -14,16 +14,7 @@ const Container = styled.div`
   padding: 20px;
 `
 
-const LoadingWrapper = styled.div`
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 10001;
-    background-color: rgba(0, 0, 0, 0.8);
-`
+
 
 export default function Confirmation(props) {
   const [registered, setRegistered] = useState(false)
@@ -50,9 +41,7 @@ export default function Confirmation(props) {
             Votre compte a ete active, vous allez etre rediriger vers la page de connexion.
         </div>
         :
-        <LoadingWrapper>
-          <LoadingIndicator />
-        </LoadingWrapper>
+        <LoadingIndicator />
 
       }
     </Container>

@@ -123,7 +123,7 @@ const CommentWrapper = styled.div`
   max-width: 1000px;
 `
 
-const ProfileTeacher = (props) => {
+const PersonalProfile = (props) => {
   const { id } = props.match.params
   const [user, setUser] = useState({ firstname: '', lastname: '', role: "fff" })
   return (
@@ -209,4 +209,4 @@ const ProfileTeacher = (props) => {
   )
 }
 
-export default ProfileTeacher
+export default PersonalProfile

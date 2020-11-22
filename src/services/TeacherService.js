@@ -4,6 +4,7 @@ import {visitor} from './Client'
 class TeacherService {
     async getTeachers() {
         const result = await visitor.get('api/teachers').then(res => {
+            console.log (res)
             const {data} = res
            return data
         })

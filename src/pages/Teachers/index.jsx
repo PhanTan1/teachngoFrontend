@@ -27,36 +27,36 @@ const StyledLink = styled(Link)`
 
 const Teachers = (props) => {
     const [teachers, setTeachers] = useState(
-        [
-            { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic, location: 'Chnok City' },
-            { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Brazzaville' },
-        ]
+        // [
+        //     { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic, location: 'Chnok City' },
+        //     { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Brazzaville' },
+        // ]
     )
 
     useEffect(() => {
         if (props.match.params.category === 'all') {
-            setTeachers(
-                TeacherService.getTeachers()
-            )
+
+                TeacherService.getTeachers().then(res=>setTeachers(res))
+            
         } else {
-            setTeachers(
-                TeacherService.getTeachersByCategory(props.match.params.category)
-            )
+            
+                TeacherService.getTeachersByCategory(props.match.params.category).then(res=>setTeachers(res))
+            
         }
-    }, [])
+    }, [props.match.params.category])
 
     return (
         <div>
             <h1 className="text-center"> Teachers List</h1>
 
             <TeachersWrapper>
-                {/* {teachers ? */}
-                {teachers.map(teacher => (
+                {teachers ?
+                teachers.map(teacher => (
                     <StyledLink to={`/teachers/${teacher.id}`} key={teacher.id}>
                         <Bubble name={teacher.firstName} bg={pic2} location={teacher.location} />
                     </StyledLink>
                 ))
-                    // : null
+                     : null
                 }
 
             </TeachersWrapper>

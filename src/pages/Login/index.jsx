@@ -9,6 +9,7 @@ const Container = styled.div`
   width: 100vw;
   min-height: calc(100vh - 142px);
   background-color: #264653;
+  overflow: scroll;
 `
 
 const Box = styled.div`
@@ -74,8 +75,9 @@ const Login = (props) => {
 
 
   async function handleLogin() {
-    const test = await AuthenticationService.login(username, password);
-    console.log(test)
+    const token = await AuthenticationService.login(username, password);
+
+    window.sessionStorage.setItem('token', token)
   }
   return (
     loggedIn ?

@@ -14,6 +14,10 @@ import {
 import { appointments } from "../../static/data/appoitments"
 import AvailabilityService from "../../services/AvailabilityService"
 
+import visa from "../../static/logo/visa.png"
+import mastercard from "../../static/logo/mastercard.png"
+import paypal from "../../static/logo/paypal.png"
+
 const GlobalStyle = createGlobalStyle`
   body {
     overflow: hidden
@@ -55,11 +59,32 @@ const Text = styled.div`
   font-size: 16px;
 `
 
+const Label = styled.label`
+  max-width: 50px;
+  width: 100%;
+
+  img{
+    width: 100%;
+  }
+`
+
+const Radio = styled.input`
+  margin-left: 10px;
+`
+
+const PaymentMethod = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`
+
 const Reservation = (props) => {
   const [data, setRdv] = useState([...appointments])
   const [modal, setModal] = useState(false)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
+  const [innerContent, setInnerContent] = useState('confirm')
+  const [method, setMethod] = useState('')
 
   const [currentDate, setCurrecntDate] = useState(new Date())
 
@@ -90,6 +115,9 @@ const Reservation = (props) => {
     )
   }
 
+  function handleRadio(e) {
+    setMethod(e.target.name)
+  }
 
   // useEffect(() => {
   //   AvailabilityService.getAvailabilities(props.match.params.id, setRdv)
@@ -102,14 +130,47 @@ const Reservation = (props) => {
           <GlobalStyle />
           <Modal>
             <ModalInner>
-              <Text>
-                <p>{`Vous etes sur le point de reserver la plage horaire de ${startTime} a ${endTime}`}</p>
-                <p>En confirmant vous aller acceder a l'ecran de payment.</p>
-              </Text>
-              <div>
-                <Button color="secondary" onClick={() => setModal(false)}>Annuler</Button>
-                <Button color="primary" >Confirmer</Button>
-              </div>
+              {innerContent === 'confirm' ?
+                <>
+                  <Text>
+                    <p>{`Vous etes sur le point de reserver la plage horaire de ${startTime} a ${endTime}`}</p>
+                    <p>En confirmant vous allez acceder a l'ecran de paiement.</p>
+                  </Text>
+                  <div>
+                    <Button color="secondary" onClick={() => setModal(false)}>Annuler</Button>
+                    <Button color="primary" onClick={() => setInnerContent('payment')}>Confirmer</Button>
+                  </div>
+                </>
+                :
+                <>
+                  <PaymentMethod>
+                    <fieldset>
+                      <Label><img src={visa} alt="visa" /></Label>
+                      <Radio type="radio" name="method" value="visa" onChange={handleRadio} />
+                    </fieldset>
+                    <fieldset>
+                      <Label><img src={mastercard} alt="mastercard" /></Label>
+                      <Radio type="radio" name="method" value="mastercard" onChange={handleRadio} />
+                    </fieldset>
+                    <fieldset>
+                      <Label><img src={paypal} alt="paypal" /></Label>
+                      <Radio type="radio" name="method" value="paypal" onChange={handleRadio} />
+                    </fieldset>
+                  </PaymentMethod>
+                  <form>
+                    {
+                      method === 'visa' || method === 'mastercard' ?
+                        <div>{`Paiement avec ${method}`}</div>
+                        :
+                        <div>Connectez votre compte paypal</div>
+                    }
+                  </form>
+                  <div>
+                    <Button color="secondary" onClick={() => setModal(false)}>Annuler</Button>
+                    <Button color="primary" >Payer</Button>
+                  </div>
+                </>
+              }
             </ModalInner>
           </Modal>
         </>

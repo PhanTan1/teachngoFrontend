@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import LoadingIndicator from '../../components/LoadingIndicator'
-import Button from "../../components/Button"
 import AuthenticationService from "../../services/AuthenticationService"
 import { Redirect } from "react-router-dom"
 

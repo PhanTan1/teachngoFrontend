@@ -12,7 +12,7 @@ class SignupService {
   }
 
   async registerNewTeacher(values) {
-    const response = await client.post(``, values).then(result => {
+    const response = await client.post(`teachers`, values).then(result => {
 
       return result
     })

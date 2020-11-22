@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import { Redirect } from "react-router-dom"
 import Button from "../../components/Button"
+import AuthenticationService from "../../services/AuthenticationService"
 
 const Container = styled.div`
   position: relative;
@@ -72,6 +73,10 @@ const Login = (props) => {
   }
 
 
+  function handleLogin() {
+    const test = AuthenticationService.login(username, password);
+    console.log(test)
+  }
   return (
     loggedIn ?
       <Redirect to="/teachers" /> :
@@ -88,7 +93,7 @@ const Login = (props) => {
               <input type="password" autoComplete="off" value={password} onChange={handlePassword} />
             </Input>
             <ButtonWrapper>
-              <Button onClick={toggleLoggedIn}>Log in</Button>
+              <Button onClick={handleLogin}>Log in</Button>
             </ButtonWrapper>
           </form>
         </Box>

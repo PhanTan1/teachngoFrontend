@@ -73,8 +73,8 @@ const Login = (props) => {
   }
 
 
-  function handleLogin() {
-    const test = AuthenticationService.login(username, password);
+  async function handleLogin() {
+    const test = await AuthenticationService.login(username, password);
     console.log(test)
   }
   return (

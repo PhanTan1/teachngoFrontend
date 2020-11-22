@@ -34,7 +34,7 @@ const Teachers = (props) => {
     )
 
     useEffect(() => {
-        if (props.match.param.category === 'all') {
+        if (props.match.params.category === 'all') {
             setTeachers(
                 TeacherService.getTeachers()
             )

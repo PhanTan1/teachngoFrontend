@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import StyledButton from '../../components/Button'
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -14,7 +16,6 @@ const CategoriesWrapper = styled.div`
 `
 
 const Category = styled.div`
-  max-width: 20%;
   height: 130px;
   width: 100%;
   background-color: black;
@@ -29,6 +30,12 @@ const InnerText = styled.span`
   font-weight: bold;
 `
 
+const StyledLink = styled(Link)`
+  max-width: 20%;
+  width: 100%;
+  height: 130px;
+`
+
 const Home = (props) => {
   return (
     <Wrapper>
@@ -37,10 +44,10 @@ const Home = (props) => {
       <div>
         <div>Recherches rapides</div>
         <CategoriesWrapper>
-          <Category><InnerText>Primaire</InnerText></Category>
-          <Category><InnerText>Secondaire</InnerText></Category>
-          <Category><InnerText>Universitaire</InnerText></Category>
-          <Category><InnerText>Langues</InnerText></Category>
+        <StyledLink to="/teachers/list/primaire"><Category><InnerText>Primaire</InnerText></Category></StyledLink>
+          <StyledLink to="/teachers/list/secondaire"><Category><InnerText>Secondaire</InnerText></Category></StyledLink>
+          <StyledLink to="/teachers/list/superieur"><Category><InnerText>Universitaire</InnerText></Category></StyledLink>
+          <StyledLink to="/teachers/list/langues"><Category><InnerText>Langues</InnerText></Category></StyledLink>
         </CategoriesWrapper>
       </div>
     </Wrapper>

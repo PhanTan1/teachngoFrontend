@@ -1,14 +1,23 @@
-import {client} from './Client'
+import {visitor} from './Client'
 
 
 class TeacherService {
-    getTeachers(callback) {
-        client.get('teachers').then(result => {
-            console.log(result)
-
-
-            callback(result.data)
+    async getTeachers() {
+        const result = await visitor.get('teachers').then(res => {
+            const {data} = res
+           return data
         })
+        return result
+    }
+
+    async getTeachersByCategory(cat) {
+        const result = await visitor.get(`courses/bycategory/${cat}`)
+        .then(res => {
+            const {data} = res
+            return data
+        })
+
+        return result
     }
 }
 

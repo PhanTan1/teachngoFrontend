@@ -11,7 +11,8 @@ import ProfilTeacher from './pages/ProfileTeacher'
 import ProfilStudent from './pages/ProfileStudent'
 import Reservation from './pages/Reservation'
 import Signup from './pages/Signup'
-import PersonaProfile from "./pages/ProfilePersonnel"
+import PersonalProfile from "./pages/ProfilePersonnel"
+import Confirmation from "./pages/Confirmation"
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 142px);
@@ -24,14 +25,15 @@ function App() {
         <Navigation />
         <Switch>
           <Wrapper>
+            <Route path="/confirmation/:token/:login" exact render={props => <Confirmation {...props} />} />
             <Route path="/teachers/:id/reservation" exact render={props => <Reservation {...props} />} />
-            <Route path="/teachers/:id/profile" exact render={props => <PersonaProfile {...props} />} />
+            <Route path="/teachers/:id/profile" exact render={props => <PersonalProfile {...props} />} />
             <Route path="/students/:id/reservation" exact render={props => <Reservation {...props} />} />
             <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
             <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />
             <Route path="/login" exact render={props => <Login {...props} />} />
             <Route path="/signup" exact render={props => <Signup {...props} />} />
-            <Route path="/teachers" exact render={props => <Teachers {...props} />} />
+            <Route path="/teachers/list/:category" exact render={props => <Teachers {...props} />} />
             <Route path="/students" exact render={props => <Students {...props} />} />
             <Route path="/" exact render={props => <Home {...props} />} />
           </Wrapper>

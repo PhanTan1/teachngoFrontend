@@ -25,33 +25,40 @@ const StyledLink = styled(Link)`
     }
 `
 
-const Teachers = () => {
-    const [teachers, setTeachers] = useState([
-       
-    ])
+const Teachers = (props) => {
+    const [teachers, setTeachers] = useState(
+        [
+            { id: 1, firstName: 'Jean', lastName: 'Lou', email: 'test@test.com', profilPic: pic, location: 'Chnok City' },
+            { id: 2, firstName: 'Tan', lastName: 'Vu', email: 'test@test.com', profilPic: pic2, location: 'Brazzaville' },
+        ]
+    )
 
     useEffect(() => {
-         setTeachers(
-          TeacherService.getTeachers(setTeachers)
-      )
+        if (props.match.param.category === 'all') {
+            setTeachers(
+                TeacherService.getTeachers()
+            )
+        } else {
+            setTeachers(
+                TeacherService.getTeachersByCategory(props.match.params.category)
+            )
+        }
     }, [])
 
     return (
         <div>
             <h1 className="text-center"> Teachers List</h1>
 
-<TeachersWrapper>
-        {teachers ?
-         teachers.map(teacher => (
-                    <StyledLink to={`/teachers/${teacher.id}`}>
+            <TeachersWrapper>
+                {/* {teachers ? */}
+                {teachers.map(teacher => (
+                    <StyledLink to={`/teachers/${teacher.id}`} key={teacher.id}>
                         <Bubble name={teacher.firstName} bg={pic2} location={teacher.location} />
                     </StyledLink>
                 ))
-        :null
-        }
-        
-            
-               
+                    // : null
+                }
+
             </TeachersWrapper>
             {/* <table className="table table-striped">
                 <thead>

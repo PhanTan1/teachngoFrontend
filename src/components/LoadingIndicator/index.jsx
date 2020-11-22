@@ -55,8 +55,21 @@ const Loading = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 10001;
+    background-color: rgba(0, 0, 0, 0.8);
+`
+
 const Loader = (props) => (
-  <Loading />
+  <Wrapper>
+    <Loading />
+  </Wrapper>
 );
 
 export default Loader;

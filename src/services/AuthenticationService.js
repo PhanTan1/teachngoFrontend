@@ -1,9 +1,9 @@
-import { client } from './Client'
+import { visitor } from './Client'
 
 class AuthenticationService {
-  async login(login, password) {
-    const response = await client.post(`login`,
-      { login, password }
+  async login(username, password) {
+    const response = await visitor.post(`authenticate`,
+      { username, password }
     )
       .then(result => {
 

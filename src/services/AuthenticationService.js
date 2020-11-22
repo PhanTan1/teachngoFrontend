@@ -1,9 +1,9 @@
 import { client } from './Client'
 
 class AuthenticationService {
-  async login(username, password) {
+  async login(login, password) {
     const response = await client.post(`login`,
-      { username, password }
+      { login, password }
     )
       .then(result => {
 

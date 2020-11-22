@@ -7,7 +7,7 @@ import AuthenticationService from "../../services/AuthenticationService"
 const Container = styled.div`
   position: relative;
   width: 100vw;
-  height: calc(100vh - 142px);
+  min-height: calc(100vh - 142px);
   background-color: #264653;
 `
 

@@ -11,6 +11,10 @@ class AuthenticationService {
       })
     return response
   }
+
+  async activateAccount(token, login) {
+    //TODO: Add activation api
+  }
 }
 
 export default new AuthenticationService();

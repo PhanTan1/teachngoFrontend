@@ -3,7 +3,7 @@ import {visitor} from './Client'
 
 class TeacherService {
     async getTeachers() {
-        const result = await visitor.get('teachers').then(res => {
+        const result = await visitor.get('api/teachers').then(res => {
             const {data} = res
            return data
         })
@@ -11,7 +11,7 @@ class TeacherService {
     }
 
     async getTeachersByCategory(cat) {
-        const result = await visitor.get(`courses/bycategory/${cat}`)
+        const result = await visitor.get(`api/courses/bycategory/${cat}`)
         .then(res => {
             const {data} = res
             return data

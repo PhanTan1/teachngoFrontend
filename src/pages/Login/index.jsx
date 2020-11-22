@@ -78,6 +78,7 @@ const Login = (props) => {
     const data = await AuthenticationService.login(username, password);
 
     window.sessionStorage.setItem('token', data.token)
+    setLoggedIn(true)
   }
   return (
     loggedIn ?

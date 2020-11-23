@@ -96,6 +96,7 @@ const Login = (props) => {
     setLoggedIn(true)
     props.setIsLoggedIn(true)
     props.setRole(roles[data.role])
+    props.setId(data.id)
     history.replace(from);
   }
   return (

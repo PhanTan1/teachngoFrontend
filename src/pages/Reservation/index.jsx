@@ -79,12 +79,12 @@ const PaymentMethod = styled.div`
 `
 
 const Reservation = (props) => {
-  const [data, setRdv] = useState([...appointments])
+  const [data] = useState([...appointments])
   const [modal, setModal] = useState(false)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [innerContent, setInnerContent] = useState('confirm')
-  const [method, setMethod] = useState('')
+  const [method, setMethod] = useState('visa')
 
   const [currentDate, setCurrecntDate] = useState(new Date())
 
@@ -116,7 +116,7 @@ const Reservation = (props) => {
   }
 
   function handleRadio(e) {
-    setMethod(e.target.name)
+    setMethod(e.target.value)
   }
 
   // useEffect(() => {

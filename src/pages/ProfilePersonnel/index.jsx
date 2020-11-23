@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import pic from "../../static/images/Marc.jpg"
 import Button from "../../components/Button"
 import { Link } from "react-router-dom"
+import TeacherService from "../../services/TeacherService"
 
 const Image = styled.div`
   border-radius: 20px;
@@ -125,7 +126,17 @@ const CommentWrapper = styled.div`
 
 const PersonalProfile = (props) => {
   const { id } = props.match.params
-  const [user, setUser] = useState({ firstname: '', lastname: '', role: "fff" })
+  const [user, setUser] = useState()
+  const [uid, setUid] = useState('')
+
+  useEffect(() => {
+    TeacherService.getTeacherById(id).then(res => {
+      setUser(res)
+      setUid(res[0].authorities[0].authority)
+    }
+    )
+  }, [])
+
   return (
     <>
       <Head>
@@ -144,7 +155,7 @@ const PersonalProfile = (props) => {
           }
         </OrderBox>
       </Head>
-      {user.role === "teacher" ?
+      {props.role === "teacher" ?
         <>
           <Body>
             <LeftColumn>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
-import { Redirect } from "react-router-dom"
+import {
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom"
 import Button from "../../components/Button"
 import AuthenticationService from "../../services/AuthenticationService"
 
@@ -55,10 +59,21 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `
 
+const roles = {
+  '[ROLE_ADMIN]': 'admin',
+  '[ROLE_TEACHER]': 'teacher',
+  '[ROLE_STUDENT]': 'student',
+}
+
 const Login = (props) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
+
+  let history = useHistory();
+  let location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
 
   function handleUsername(e) {
     setUsername(e.target.value)
@@ -79,6 +94,9 @@ const Login = (props) => {
 
     window.sessionStorage.setItem('token', data.token)
     setLoggedIn(true)
+    props.setIsLoggedIn(true)
+    props.setRole(roles[data.role])
+    history.replace(from);
   }
   return (
     loggedIn ?

@@ -1,9 +1,9 @@
-import { client } from './Client'
+import { visitor } from './Client'
 
 
 class SignupService {
   async registerNewStudent(values) {
-    const response = await client.post(`students`, values).then(result => {
+    const response = await visitor.post(`students`, values).then(result => {
 
       return result
     })
@@ -12,7 +12,7 @@ class SignupService {
   }
 
   async registerNewTeacher(values) {
-    const response = await client.post(`teachers`, values).then(result => {
+    const response = await visitor.post(`teachers`, values).then(result => {
 
       return result
     })

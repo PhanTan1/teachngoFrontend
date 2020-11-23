@@ -125,9 +125,9 @@ const CommentWrapper = styled.div`
 `
 
 const roles = {
-  '[ROLE_ADMIN]': 'admin',
-  '[ROLE_TEACHER]': 'teacher',
-  '[ROLE_STUDENT]': 'student',
+  'ROLE_ADMIN': 'admin',
+  'ROLE_TEACHER': 'teacher',
+  'ROLE_STUDENT': 'student',
 }
 
 

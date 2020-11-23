@@ -139,11 +139,14 @@ const ProfileTeacher = (props) => {
         </Mid>
         <OrderBox>
           <Prix>10€/h</Prix>
-          <ButtonWrapper>
-            <StyledLink to={`/teachers/${id}/reservation`}>
-              <Button color="secondary" >Reserver</Button>
-            </StyledLink>
-          </ButtonWrapper>
+          {props.role !== 'teacher' ?
+            <ButtonWrapper>
+              <StyledLink to={`/teachers/${id}/reservation`}>
+                <Button color="secondary">Reserver</Button>
+              </StyledLink>
+            </ButtonWrapper>
+            : null
+          }
         </OrderBox>
       </Head>
       <Body>

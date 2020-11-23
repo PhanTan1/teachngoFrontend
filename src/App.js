@@ -20,14 +20,14 @@ const Wrapper = styled.div`
 `
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [role, setRole] = useState(0)
-  const [id, setId] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [role, setRole] = useState('teacher')
+  const [id, setId] = useState('1')
 
-  function PrivateRoute({ children, ...rest }) {
+  function PrivateRoute({ children, ...props }) {
     return (
       <Route
-        {...rest}
+        {...props}
         render={({ location }) =>
           isLoggedIn ? (
             children
@@ -50,18 +50,21 @@ function App() {
         <Navigation role={role} isLoggedIn={isLoggedIn} id={id} />
         <Switch>
           <Wrapper>
-            <PrivateRoute path="/teachers/:id/reservation">
-              <Reservation />
+            <PrivateRoute path="/teachers">
+              <Switch>
+                <Route path="/teachers/:id/reservation" render={props => <Reservation {...props} />} />
+                <Route path="/teachers/:id/profile" render={props => <PersonalProfile role={role} {...props} />} />
+              </Switch>
+              {/* <Reservation /> */}
             </PrivateRoute>
-            <PrivateRoute path="/teacher/:id/profile" >
-              <PersonalProfile />
-            </PrivateRoute>
+            {/* <PrivateRoute path="/teacher/:id/profile" >
+
+            </PrivateRoute> */}
             <PrivateRoute path="/students" >
-              <PersonalProfile />
               <Students />
             </PrivateRoute>
             <Route path="/confirmation/:token/:login" exact render={props => <Confirmation {...props} />} />
-            <Route path="/teachers/:id" exact render={props => <ProfilTeacher {...props} />} />
+            <Route path="/teachers/:id" exact render={props => <ProfilTeacher role={role} {...props} />} />
             <Route path="/students/:id" exact render={props => <ProfilStudent {...props} />} />
             <Route path="/login" exact render={props => <Login setIsLoggedIn={setIsLoggedIn} setRole={setRole} setId={setId} {...props} />} />
             <Route path="/signup" exact render={props => <Signup {...props} />} />

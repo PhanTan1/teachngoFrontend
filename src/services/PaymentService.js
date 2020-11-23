@@ -1,8 +1,10 @@
 import { client } from "./Client"
 
 class PaymentServices {
-  async makePayment() {
-    const response = await client.post('payements').then(res => {
+  async makePayment(values) {
+    const response = await client.post('payements',
+      values
+    ).then(res => {
       const { data } = res
 
       return data

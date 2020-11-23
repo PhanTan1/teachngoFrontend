@@ -1,8 +1,9 @@
+import { client } from './Client'
 import { visitor } from './Client'
 
 class StudentService {
     getStudents(callback) {
-        visitor.get('students').then(result => {
+        client.get('students').then(result => {
             console.log(result)
 
             callback(result.data)

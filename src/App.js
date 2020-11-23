@@ -55,11 +55,7 @@ function App() {
                 <Route path="/teachers/:id/reservation" render={props => <Reservation {...props} />} />
                 <Route path="/teachers/:id/profile" render={props => <PersonalProfile role={role} {...props} />} />
               </Switch>
-              {/* <Reservation /> */}
             </PrivateRoute>
-            {/* <PrivateRoute path="/teacher/:id/profile" >
-
-            </PrivateRoute> */}
             <PrivateRoute path="/students" >
               <Students />
             </PrivateRoute>

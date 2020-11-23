@@ -8,19 +8,19 @@ const Nav = styled.nav`
   justify-content: flex-end;
   width: 100%;
   padding: 10px 30px;
-  min-height: 50px;
+  min-height: 72px;
   align-items: center;
-  box-shadow: 0px 0px 20px -10px #000000
+  box-shadow: 0px 0px 20px -10px #000000;
 `
 
 const List = styled.ul`
   list-style: none;
   display: flex;
-  max-width: 400px;
+  max-width: ${props => props.isLoggedIn ? '350px' : '500px'};
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-bottom: 0px;
-  margin-right: 20px;
 `
 
 const StyledLink = styled(Link)`
@@ -37,15 +37,23 @@ const StyledLink = styled(Link)`
 const Navigation = (props) => {
   return (
     <Nav>
-      <List>
+      <List isLoggedIn={props.isLoggedIn}>
         <StyledLink to="/"><li>Home</li></StyledLink>
         <StyledLink to="/teachers/list/all"><li>Teachers</li></StyledLink>
-        <StyledLink to="/students"><li>Students</li></StyledLink>
-        <StyledLink to="/login"><li>Connexion</li></StyledLink>
+        {props.role === 'admin' ? <StyledLink to="/students"><li>Students</li></StyledLink> : null}
+        {props.isLoggedIn ?
+          <StyledLink to={`/${props.role}/${props.id}/profile`}><li>Profile</li></StyledLink> :
+          <StyledLink to="/login"><li>Connexion</li></StyledLink>
+        }
+
+        {props.isLoggedIn ?
+          null
+          :
+          <StyledLink to="/signup">
+            <Button color="primary">Inscription</Button>
+          </StyledLink>
+        }
       </List>
-      <StyledLink to="/signup">
-        <Button color="primary">Inscription</Button>
-      </StyledLink>
     </Nav>
   )
 }

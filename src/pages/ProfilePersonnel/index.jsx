@@ -124,99 +124,108 @@ const CommentWrapper = styled.div`
   max-width: 1000px;
 `
 
+const roles = {
+  '[ROLE_ADMIN]': 'admin',
+  '[ROLE_TEACHER]': 'teacher',
+  '[ROLE_STUDENT]': 'student',
+}
+
+
 const PersonalProfile = (props) => {
   const { id } = props.match.params
   const [user, setUser] = useState()
-  const [uid, setUid] = useState('')
+  const [role, setRole] = useState('')
 
   useEffect(() => {
     TeacherService.getTeacherById(id).then(res => {
       setUser(res)
-      setUid(res[0].authorities[0].authority)
+      setRole(roles[res.authorities[0].authority])
     }
     )
   }, [])
 
   return (
-    <>
-      <Head>
-        <Image bg={pic} alt='Marc' />
-        <Mid>
-          <h1>Marc</h1>
-          <Comment>
-            <div>Jacques</div>
-            <p>Moi j'ai commande Marc exellent prof</p>
-          </Comment>
-        </Mid>
-        <OrderBox>
-          {user.role === 'teacher' ?
-            <Button>Ajouter un cours</Button>
-            : null
-          }
-        </OrderBox>
-      </Head>
-      {props.role === "teacher" ?
-        <>
-          <Body>
-            <LeftColumn>
-              <SectionTitle>Informations</SectionTitle>
-              <InfoContent>
-                Maecenas vel enim id orci lacinia pharetra.
-                Suspendisse quis tincidunt augue.
-                Ut laoreet risus sit amet mauris euismod, vel vestibulum ex consequat.
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                Praesent leo libero, eleifend id est sed, malesuada dictum leo.
-                Vivamus sagittis ex vitae cursus ultrices.
-                Phasellus et felis et turpis laoreet egestas.
-                Donec accumsan suscipit ante, ut aliquet ex.
-          </InfoContent>
-            </LeftColumn>
-            <RightColumn>
-              <div>
-                <SectionTitle>Bio</SectionTitle>
+    user ?
+      <>
+        <Head>
+          <Image bg={pic} alt='Marc' />
+          <Mid>
+            <h1>Marc</h1>
+            <Comment>
+              <div>Jacques</div>
+              <p>Moi j'ai commande Marc exellent prof</p>
+            </Comment>
+          </Mid>
+          <OrderBox>
+            {role === 'teacher' ?
+              <Button>Ajouter un cours</Button>
+              : null
+            }
+          </OrderBox>
+        </Head>
+        {role === "teacher" ?
+          <>
+            <Body>
+              <LeftColumn>
+                <SectionTitle>Informations</SectionTitle>
                 <InfoContent>
-                  Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher
+                  Maecenas vel enim id orci lacinia pharetra.
+                  Suspendisse quis tincidunt augue.
+                  Ut laoreet risus sit amet mauris euismod, vel vestibulum ex consequat.
+                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                  Praesent leo libero, eleifend id est sed, malesuada dictum leo.
+                  Vivamus sagittis ex vitae cursus ultrices.
+                  Phasellus et felis et turpis laoreet egestas.
+                  Donec accumsan suscipit ante, ut aliquet ex.
           </InfoContent>
-              </div>
-              <div>
-                <SectionTitle>Consignes</SectionTitle>
-                <InfoContent>Morbi aliquet imperdiet sem nec volutpat.
-                Fusce non imperdiet arcu. Integer egestas orci nec ipsum tempor faucibus.
-                Praesent turpis dui, mattis id lacus et, finibus ornare eros. Vivamus vitae magna sapien.
-                Cras euismod nisl sit amet eros gravida, vitae porta urna sodales. Proin eget rhoncus est.
-                Nullam enim massa, faucibus sit amet egestas non, fringilla auctor felis.
-                Mauris porttitor rhoncus ipsum at feugiat. Nunc lacinia tincidunt lectus, eget accumsan massa gravida id.
-                Morbi vitae leo urna. Nunc in efficitur sem. Maecenas id velit semper, ullamcorper dui eu, fermentum dui.
-                Proin eu iaculis metus, et ullamcorper sem.
-                Mauris nunc nisl, dictum sit amet erat sit amet, porta pretium tellus. Sed eu ex nisl.
+              </LeftColumn>
+              <RightColumn>
+                <div>
+                  <SectionTitle>Bio</SectionTitle>
+                  <InfoContent>
+                    Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher Salut je m'appelle Marc. Reservez moi, je coute pas cher
           </InfoContent>
-                <InfoContent>
-                  Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                  Mauris imperdiet tellus egestas dignissim auctor. Sed vel maximus nisi.
-                  Nullam sed mi vitae dolor placerat hendrerit sed hendrerit dui.
-                  Vivamus eget risus ac tortor maximus lobortis at ac eros. Nulla volutpat in nibh sit amet tincidunt.
-                  Nunc ultricies erat dui, vitae volutpat ex tristique eu. Maecenas felis elit, tincidunt sit amet laoreet quis, fermentum vitae ligula.
-                  In hac habitasse platea dictumst. Vestibulum in libero id sem tincidunt hendrerit. Phasellus eget lorem nisi.
+                </div>
+                <div>
+                  <SectionTitle>Consignes</SectionTitle>
+                  <InfoContent>Morbi aliquet imperdiet sem nec volutpat.
+                  Fusce non imperdiet arcu. Integer egestas orci nec ipsum tempor faucibus.
+                  Praesent turpis dui, mattis id lacus et, finibus ornare eros. Vivamus vitae magna sapien.
+                  Cras euismod nisl sit amet eros gravida, vitae porta urna sodales. Proin eget rhoncus est.
+                  Nullam enim massa, faucibus sit amet egestas non, fringilla auctor felis.
+                  Mauris porttitor rhoncus ipsum at feugiat. Nunc lacinia tincidunt lectus, eget accumsan massa gravida id.
+                  Morbi vitae leo urna. Nunc in efficitur sem. Maecenas id velit semper, ullamcorper dui eu, fermentum dui.
+                  Proin eu iaculis metus, et ullamcorper sem.
+                  Mauris nunc nisl, dictum sit amet erat sit amet, porta pretium tellus. Sed eu ex nisl.
           </InfoContent>
-              </div>
-            </RightColumn>
+                  <InfoContent>
+                    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    Mauris imperdiet tellus egestas dignissim auctor. Sed vel maximus nisi.
+                    Nullam sed mi vitae dolor placerat hendrerit sed hendrerit dui.
+                    Vivamus eget risus ac tortor maximus lobortis at ac eros. Nulla volutpat in nibh sit amet tincidunt.
+                    Nunc ultricies erat dui, vitae volutpat ex tristique eu. Maecenas felis elit, tincidunt sit amet laoreet quis, fermentum vitae ligula.
+                    In hac habitasse platea dictumst. Vestibulum in libero id sem tincidunt hendrerit. Phasellus eget lorem nisi.
+          </InfoContent>
+                </div>
+              </RightColumn>
 
 
-          </Body>
+            </Body>
+            <Comments>
+              <CommentWrapper>
+                <SectionTitle>Commentaires</SectionTitle>
+              </CommentWrapper>
+            </Comments>
+          </>
+          :
           <Comments>
             <CommentWrapper>
-              <SectionTitle>Commentaires</SectionTitle>
+              <SectionTitle>Liste des reservations</SectionTitle>
             </CommentWrapper>
           </Comments>
-        </>
-        :
-        <Comments>
-          <CommentWrapper>
-            <SectionTitle>Liste des reservations</SectionTitle>
-          </CommentWrapper>
-        </Comments>
-      }
-    </>
+        }
+      </>
+      : null
   )
 }
 

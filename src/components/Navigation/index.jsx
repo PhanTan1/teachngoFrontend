@@ -42,7 +42,7 @@ const Navigation = (props) => {
         <StyledLink to="/teachers/list/all"><li>Teachers</li></StyledLink>
         {props.role === 'admin' ? <StyledLink to="/students"><li>Students</li></StyledLink> : null}
         {props.isLoggedIn ?
-          <StyledLink to={`/${props.role}/${props.id}/profile`}><li>Profile</li></StyledLink> :
+          <StyledLink to={`/${props.role}s/${props.id}/profile`}><li>Profile</li></StyledLink> :
           <StyledLink to="/login"><li>Connexion</li></StyledLink>
         }
 

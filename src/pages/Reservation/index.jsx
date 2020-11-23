@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components"
 import Button from "../../components/Button"
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
+import TextField from '@material-ui/core/TextField';
 import {
   Scheduler,
   WeekView,
@@ -17,6 +18,7 @@ import AvailabilityService from "../../services/AvailabilityService"
 import visa from "../../static/logo/visa.png"
 import mastercard from "../../static/logo/mastercard.png"
 import paypal from "../../static/logo/paypal.png"
+import PaymentService from "../../services/PaymentService"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -78,13 +80,19 @@ const PaymentMethod = styled.div`
   justify-content: space-around;
 `
 
+const Comment = styled(TextField)`
+  margin-top: 20px !important;
+`
+
 const Reservation = (props) => {
   const [data] = useState([...appointments])
   const [modal, setModal] = useState(false)
   const [startTime, setStartTime] = useState('')
   const [endTime, setEndTime] = useState('')
   const [innerContent, setInnerContent] = useState('confirm')
-  const [method, setMethod] = useState('visa')
+  const [method, setMethod] = useState()
+  const [message, setMessage] = useState('')
+  const [id, setId] = useState('')
 
   const [currentDate, setCurrecntDate] = useState(new Date())
 
@@ -96,6 +104,7 @@ const Reservation = (props) => {
     function handleTime() {
       setStartTime(rest.data.startDate)
       setEndTime(rest.data.endDate)
+      setId(rest.data.id)
       setModal(true);
     }
     return (
@@ -117,6 +126,30 @@ const Reservation = (props) => {
 
   function handleRadio(e) {
     setMethod(e.target.value)
+  }
+
+  function processPayemnt() {
+    if (!method) {
+      return
+    }
+
+    PaymentService.makePayment(
+      {
+        reservation: {
+          id: id
+        },
+        senderAccountId: 1,
+        message: message
+      }
+    ).then(res => {
+      if (res) {
+        alert('Votre reservation a ete enregistree')
+      }
+      else {
+        alert('error')
+      }
+    })
+
   }
 
   // useEffect(() => {
@@ -161,13 +194,23 @@ const Reservation = (props) => {
                     {
                       method === 'visa' || method === 'mastercard' ?
                         <div>{`Paiement avec ${method}`}</div>
-                        :
-                        <div>Connectez votre compte paypal</div>
+
+
+                        : method === 'paypal' ?
+                          <div>Connectez votre compte paypal</div>
+                          : <div>Choisissez un mode paiement</div>
                     }
+                    <Comment
+                      id="comment"
+                      label="Commentaire"
+                      name="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
                   </form>
                   <div>
                     <Button color="secondary" onClick={() => setModal(false)}>Annuler</Button>
-                    <Button color="primary" >Payer</Button>
+                    <Button color="primary" onClick={processPayemnt}>Payer</Button>
                   </div>
                 </>
               }

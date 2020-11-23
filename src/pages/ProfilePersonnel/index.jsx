@@ -4,6 +4,7 @@ import pic from "../../static/images/Marc.jpg"
 import Button from "../../components/Button"
 import { Link } from "react-router-dom"
 import TeacherService from "../../services/TeacherService"
+import StudentService from "../../services/StudentService"
 
 const Image = styled.div`
   border-radius: 20px;
@@ -137,11 +138,17 @@ const PersonalProfile = (props) => {
   const [role, setRole] = useState('')
 
   useEffect(() => {
-    TeacherService.getTeacherById(id).then(res => {
-      setUser(res)
-      setRole(roles[res.authorities[0].authority])
+    if (props.role === 'teacher') {
+      TeacherService.getTeacherById(id).then(res => {
+        setUser(res)
+        setRole(roles[res.authorities[0].authority])
+      })
+    } else {
+      StudentService.getStudentById(id).then(res => {
+        setUser(res)
+        setRole(roles[res.authorities[0].authority])
+      })
     }
-    )
   }, [])
 
   return (
